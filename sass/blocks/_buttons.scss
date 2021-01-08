@@ -9,6 +9,10 @@
   height: 32px;
   text-transform: uppercase;
 
+  &:hover {
+    background-color: #971010;
+  }
+
   &_main {
     width: 303px;
     height: 54px;
