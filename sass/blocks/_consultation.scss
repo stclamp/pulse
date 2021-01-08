@@ -1,0 +1,12 @@
+.consultation {
+    background: url(../img/bg/second-bg.jpg) center center/cover no-repeat;
+    min-height: 680px;
+    padding: 100px 0 108px 0;
+
+    &__descr {
+        font-size: 20px;
+        line-height: 30px;
+        color: #fff;
+        font-weight: 500;
+    }
+}

@@ -8,11 +8,19 @@
   width: 153px;
   height: 32px;
   text-transform: uppercase;
+
   &_main {
     width: 303px;
     height: 54px;
     font-size: 16px;
     font-weight: 500;
     margin-top: 67px; //hover в медиа прописать
+  }
+
+  &_submit {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    height: 54px;
   }
 }
