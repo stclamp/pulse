@@ -23,7 +23,6 @@
   .feed-form {
     margin: 0 auto;
   }
-
 }
 
 @media (max-width: 991px) {
@@ -46,12 +45,28 @@
 
   .promo {
     &__wrapper {
-      align-items: center
+      align-items: center;
     }
   }
 
   .title_left {
     font-size: 30px;
+  }
+  .carousel {
+    &__inner {
+      width: auto;
+      div {
+        img {
+          width: 90%;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .next,
+  .prev {
+    display: none;
   }
 }
 
