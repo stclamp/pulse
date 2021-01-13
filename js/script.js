@@ -27,8 +27,8 @@ document.querySelector('.prev').addEventListener('click', function () {
   });
 
 
-  (function($) {
-    $(function() {
+
+    $(document).ready(function() {
       
       $('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function() {
         $(this)
@@ -48,5 +48,62 @@ document.querySelector('.prev').addEventListener('click', function () {
 
       toggleSlide('.catalog-item__link');
       toggleSlide('.catalog-item__back');
+
+      // Modal
+
+      $('[data-modal=consultation]').on('click', function() {
+        $('.overlay, #consultation').fadeIn();
+      });
+      $('.modal__close').on('click', function() {
+        $('.overlay, #consultation, #thanks, #order').fadeOut();
+      });
+      $('.button_mini').each(function(i) {
+        $(this).on('click', function() {
+          $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
+          $('.overlay, #order').fadeIn();
+        });
+      });
+
+      function validateForms(form) {
+        $(form).validate({
+          rules: {
+            name: "required",
+            phone: "required",
+            email: {
+              required: true,
+              email: true
+            }
+          },
+          messages: {
+            name: "Пожалуйста, введите свое имя",
+            phone: "Пожалуйста, введите свой номер телефона",
+            email: {
+              required: "Пожалуйста, введите свой e-mail",
+              email: "Почта должна иметь формат name@domain.com"
+            }
+          }
+        });
+      }
+
+      validateForms('#consultation-form');
+      validateForms('#consultation form');
+      validateForms('#order form');
+
+
+      $('input[name=phone]').mask("+380(99) 99-99-999");
+
+      $('form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+          type: "POST",
+          url: "mailer/smart.php",
+          data: $(this).serialize()
+        }).done(function() {
+          $(this).find("input").val("");
+
+
+          $('form').trigger('reset');
+        });
+        return false;
+      });
     });
-  })(jQuery);
